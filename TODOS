@@ -1,0 +1,3 @@
+- Properly register the manim plugin?
+- Make a proper revealjs plugin out of the javascript code
+- New feature: allow manim animations to be used as more than just slide backgrounds

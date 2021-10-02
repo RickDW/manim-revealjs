@@ -1,1 +1,0 @@
-<p class="fragment" type='video' time_start=0 time_end=1.0></p>

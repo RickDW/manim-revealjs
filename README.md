@@ -1,7 +1,11 @@
-Allows for a <a href="https://github.com/hakimel/reveal.js/">reveal.js</a> presentation consisting of queued up Manim animations. Based on <a href="https://github.com/anjandn/manim_reveal">anjandn/manim_reveal</a>, but updated to work with ManimCE 0.7.0 (manim_reveal was broken by manim updates).
+# [WIP] Manim and Reveal.js plugins for using animations of maths in your slides
 
-Go <a href="https://christopherchubb.com/manim_slides">here</a> for a live demonstration of it working.
+This repository contains the required plugins to use the beautiful mathematical animations that are made possible by [Manim](https://www.manim.community) in presentation slides made with [Reveal.js](https://github.com/hakimel/reveal.js).
 
-Manim code is put into <code>./talk.py</code>, and the corresponding slides need to be put into <code>./index.html</code>. To compile the manim videos for slide X run <code>manimce talk.py X</code>.
+(This is a fork of [manim_slides](https://github.com/chubbc/manim_slides) which itself is a fork of [manim_reveal](https://github.com/anjandn/manim_reveal))
 
-To view a local copy you must run <code>npm start</code> on the local copy.
+At the moment this repository is a complete work in progress and you probably won't get much use out of it. Updates are expected in the next few weeks.
+
+## How to install and use
+
+\# TODO Write this section

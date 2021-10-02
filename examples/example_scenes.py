@@ -1,4 +1,4 @@
-from manim_slide import *
+from manim_revealjs import *
 
 class Title(SlideScene):
     def construct(self):

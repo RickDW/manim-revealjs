@@ -1,0 +1,3 @@
+venv
+examples/test_scenes/media
+*.pyc

@@ -1,6 +1,6 @@
 - Properly register the manim plugin?
 - Make a proper revealjs plugin out of the javascript code
-- New feature: allow manim animations to be used as separate video elements instead of only slide backgrounds
+- New feature: allow manim animations to be used as separate video elements instead of only as slide backgrounds
 - New feature: implement different types of video fragments, like the ones provided by 
     Christopher Besch's web presenter project (https://github.com/christopher-besch/manim_web_presenter)
     Types of slides: 

@@ -1,3 +1,4 @@
 venv
 examples/test_scenes/media
 *.pyc
+manim_plugin/manim_revealjs_presentations/video_slides

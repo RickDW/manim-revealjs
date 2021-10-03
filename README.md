@@ -6,6 +6,14 @@ This repository contains the required plugins to use the beautiful mathematical 
 
 At the moment this repository is a complete work in progress and you probably won't get much use out of it. Updates are expected in the next few weeks.
 
-## How to install and use
+## How to use the plugins
 
-\# TODO Write this section
+To add Manim animations to your presentation you first need to render them. In order to make the integration with Reveal.js as smooth as possible you can use the Manim plugin's `PresentationScene`. There are no major differences with the normal `Scene` that you're used to, except for the `PresentationScene`'s `end_fragment`() method. If this method is called in the scene's `construct`() method it means there will be a pause in the animation when it is displayed in the slide deck. **Important:** every `construct`() you define **needs** to end with an `end_fragment`() call to correctly handle the animation.
+
+Once the animations have been rendered, you can link them in your slide deck. Here you have two options: either you display the animations fullscreen as the background of a slide, or you add them along with the rest of the objects in your slides.
+
+If you want to go for the first option, the slide's `<section>` should be given the `fv-background` class (short for *fragmented video class*). Next you need to set its `fv-video` attribute to the video's url, and its `fv-playback-info` attribute to the url of the `.json` file that was generated when you rendered the video. (This last file contains the timestamps of the different fragments of your video).
+
+If you want to go for the second option of embedding your video like any other slide content, you can simply add a `<vid>` element with some extra attributes. The `src` attribute should point to the video's url, just like for a normal video element. The `fv-playback-info` attribute should point to the generated `.json` file. Finally you should add the `fv-video` class so the plugin can find your video automatically.
+
+Once you've done this you should be good to go! There are some more advanced options that you could look into such as animation looping *(WIP)*, but this is all you need to add a simple animation to your slides.

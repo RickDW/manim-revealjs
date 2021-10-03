@@ -1,4 +1,4 @@
-# [WIP] Manim and Reveal.js plugins for using animations of maths in your slides
+# [WIP] Manim and Reveal.js plugins for using mathematical animations in your slides
 
 This repository contains the required plugins to use the beautiful mathematical animations that are made possible by [Manim](https://www.manim.community) in presentation slides made with [Reveal.js](https://github.com/hakimel/reveal.js). Manim was originally created by Grant Sanderson from the Youtube channel [3B1B](https://www.youtube.com/c/3blue1brown) which is well known its pretty and clear mathematical animations.
 

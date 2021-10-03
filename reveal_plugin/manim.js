@@ -60,21 +60,21 @@ window.RevealManim = {
           var current_slide = Reveal.getCurrentSlide();
           var video_elem = current_slide.slideBackgroundElement
             .getElementsByTagName("video")[0];
-          
-          video_elem.ontimeupdate = function() {};
-          video_elem.currentTime = time_start;
-          video_elem.play();
-          video_elem.ontimeupdate = function() {
-            if (video_elem.currentTime - time_end > 0){
-              video_elem.pause();
-              video_elem.currentTime = time_end;
-              video_elem.ontimeupdate = function() {};
-            }
-          };
         }
         else {
-          // TODO implement functionality for standalone video elements
+          var video_elem = event.fragment.parentElement;
         }
+          
+        video_elem.ontimeupdate = function() {};
+        video_elem.currentTime = time_start;
+        video_elem.play();
+        video_elem.ontimeupdate = function() {
+          if (video_elem.currentTime - time_end > 0){
+            video_elem.pause();
+            video_elem.currentTime = time_end;
+            video_elem.ontimeupdate = function() {};
+          }
+        };
       }
     });
 
@@ -90,14 +90,14 @@ window.RevealManim = {
           var current_slide = Reveal.getCurrentSlide();
           var video_elem = current_slide.slideBackgroundElement
             .getElementsByTagName("video")[0];
-          
-          video_elem.currentTime = time_start;
-          video_elem.pause();
         }
         else {
-          // TODO implement functionality for standalone video elements
+          var video_elem = event.fragment.parentElement;
         }
-      }
+          
+        video_elem.currentTime = time_start;
+        video_elem.pause();
+        }
     });
 
     Reveal.addEventListener("slidechanged", function(event) {

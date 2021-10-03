@@ -16,7 +16,7 @@ If you want to go for the first option, the slide's `<section>` should be given 
 
 If you want to go for the second option of embedding your video like any other slide content, you can simply add a `<vid>` element with some extra attributes. The `src` attribute should point to the video's url, just like for a normal video element. The `fv-playback-info` attribute should point to the generated `.json` file. Finally you should add the `fv-video` class so the plugin can find your video automatically.
 
-The final thing that needs to be done is to tewl Reveal to use the RevealManim plugin. All you need to do is to pass it into the `plugin` field when you're initializing Reveal: 
+The final thing that needs to be done is to tell Reveal to use the RevealManim plugin. All you need to do is to pass it into the `plugin` field when you're initializing Reveal: 
 
 ```
 Reveal.initialize({

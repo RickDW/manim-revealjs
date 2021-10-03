@@ -7,4 +7,4 @@
     - normal (start->end)
     - no-pause (start->end->next fragment)
     - loop (start->end->start->...)
-    - complete loop (start->end->start->request for next fragment->end->next fragmentfunction)
+    - complete loop (start->end->start->request for next fragment->end->next fragment)

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Title</title>
+		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,29 +16,30 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<script src="js/add_video_slide.js" slide_scene="Title"></script>
-				<script src="js/add_video_slide.js" slide_scene="ExampleSlide"></script>
+				<section class="fv-background" fv-video="video_slides/Testing.mp4" fv-playback-info="video_slides/Testing.json">
+					<h1>Slide 1</h1>
+				</section>
+				<section>
+					<h1>Slide 2</h1>
+					<video class="fv-video" src="video_slides/Testing.mp4" fv-playback-info="video_slides/Testing.json"></video>
+				</section>
+				<section>
+					<h1>Slide 3</h1>
+				</section>
 			</div>
 		</div>
-
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/manim/manim.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: false,
-				transition: 'none',
-				progress: false,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				hash: true,
+				autoPlayMedia: false,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealManim ]
 			});
 		</script>
-		<script src="js/video_slide.js"></script>
 	</body>
 </html>

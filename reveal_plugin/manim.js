@@ -2,8 +2,7 @@ window.RevealManim = {
   id: 'manim',
   video_dir: 'videos',
   init: (deck) => {
-    // TODO load the transition timestamps and add the fragments to the DOM
-    // TODO set up the Reveal event listeners to handle fragment transitions
+    // TODO refactor the fragment creation code, there's a lot of repetition
 
     slides = Reveal.getSlides();
     for (var i = 0; i<slides.length; i++) {
@@ -27,6 +26,14 @@ window.RevealManim = {
           var elem = create_HTML_fragment(data);
           slide.appendChild(elem);
         }
+
+        // Create a last element so animations always stop at the end if you play through
+        var data = fragments.at(-1) // last fragment
+        data["background-video"] = true;
+        data["start"] = data["end"];
+        var elem = create_HTML_fragment(data);
+        elem.classList.add("fv-final-fragment");
+        slide.appendChild(elem);
       }
 
       // Set up individual video elements
@@ -44,12 +51,19 @@ window.RevealManim = {
           var elem = create_HTML_fragment(data);
           video.appendChild(elem); //TODO find a better place to put these?
         }
+
+        // Create a last element so animations always stop at the end if you play through
+        var data = fragments.at(-1) // last fragment
+        data["background-video"] = false;
+        data["start"] = data["end"];
+        var elem = create_HTML_fragment(data);
+        elem.classList.add("fv-final-fragment");
+        video.appendChild(elem);
       }
     }
 
 
     Reveal.addEventListener("fragmentshown", function(event) {
-      // TODO implement functionality for going through the slides backwards
       if (event.fragment.matches(".fv-fragment")) {
         var time_start = event.fragment.getAttribute("time_start");
         var time_end = event.fragment.getAttribute("time_end");
@@ -73,13 +87,18 @@ window.RevealManim = {
             video_elem.pause();
             video_elem.currentTime = time_end;
             video_elem.ontimeupdate = function() {};
+
+            if (event.fragment.matches(".fv-final-fragment")) {
+              // go on the next one, this was a dummy fragment
+              // since this is inside 'fragmentshown', we know we're going forward
+              Reveal.next();
+            }
           }
         };
       }
     });
 
     Reveal.addEventListener("fragmenthidden", function(event) {
-      // TODO figure out when this event occurs
       if (event.fragment.matches(".fv-fragment")) {
         var time_start = event.fragment.getAttribute("time_start");
         var time_end = event.fragment.getAttribute("time_end");
@@ -97,27 +116,11 @@ window.RevealManim = {
           
         video_elem.currentTime = time_start;
         video_elem.pause();
-        }
-    });
 
-    Reveal.addEventListener("slidechanged", function(event) {
-      // TODO figure out when this event occurs
-      if (event.hasOwnProperty("fragment") && event.fragment.matches(".fv-fragment")) {
-        var time_start = event.fragment.getAttribute("time_start");
-        var time_end = event.fragment.getAttribute("time_end");
-        var fragment_type = event.fragment.getAttribute("fragment_type");
-        var background_video = event.fragment.getAttribute("background_video") == "true";
-        
-        if (background_video) {
-          var current_slide = Reveal.getCurrentSlide();
-          var video_elem = current_slide.slideBackgroundElement
-            .getElementsByTagName("video")[0];
-          
-          Reveal.navigateFragment(-1, 0);
-          Reveal.next();
-        }
-        else {
-          // TODO implement functionality for standalone video elements (??)
+        if (event.fragment.matches(".fv-final-fragment")) {
+          // go on the previous one, this was a dummy fragment
+          // since this is inside 'fragmenthidden', we know we're going backward
+          Reveal.prev();
         }
       }
     });

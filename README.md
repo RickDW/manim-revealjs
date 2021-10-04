@@ -29,3 +29,15 @@ Reveal.initialize({
 ```
 
 Once you've done this you should be good to go! There are some more advanced options that you could look into such as animation looping *(WIP)*, but this is all you need to add a simple animation to your slides.
+
+## Fragment types
+
+The basic setup that was described in the last section should be plenty to get you up and running. If you want more control over how your animations are played during your presentation, such as putting your videos on a loop, then this is a good section to go through. The `end_fragment()` calls that define the video fragments can take an optional argument called `fragment_type`. It can take on a number of values, each of which is quickly described below.
+
+`presentationscene.NORMAL` will play the fragment once from start to end. It's nothing special, but it's probably what you'll be using most of the time.
+
+`presentationscene.LOOP` will continuously loop a fragment from start to end. This is useful when for turntables for example.
+
+`presentationscene.COMPLETE_LOOP` is similar to a normal loop fragment, but there is a difference in how it handles interruptions. If you want to go to the next fragment in the middle of the loop, then this will block that. Instead the loop will go on until it reaches the fragment's end, and only then will the animation continue to play the next fragment. This is useful if you want the transitions between your fragments to be smooth, to prevent chaotic animations for example.
+
+`presentationscene.NO_PAUSE` will play the fragment once from start to end like a normal loop, and then it will immediately go on to the next fragment. The result of using this type is similar to that of removing the call to `end_fragment()`, but it will give you a way to pause an otherwise continuous animation if there is a specific frame you want to focus on.

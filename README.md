@@ -9,9 +9,12 @@ This project contains the required plugins to use the beautiful mathematical ani
 ## Installation
 The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` file can be found in the `src/reveal_plugin/` directory. In the next section it will be explained how you can add generated videos to the slide deck.
 
-## How to use the plugins
+## Demo
 
-To add Manim animations to your presentation you first need to render them. In order to make the integration with Reveal.js as smooth as possible you can use the Manim plugin's `PresentationScene`. There are no major differences with the normal `Scene` that you're used to, except for the `PresentationScene`'s `end_fragment`() method. If this method is called in the scene's `construct`() method it means there will be a pause in the animation when it is displayed in the slide deck. **Important:** every `construct`() you define **needs** to end with an `end_fragment`() call to correctly handle the animation.
+Once everything is installed you can run the demo that is provided in the `examples/showcase` directory.
+
+## How to use the plugins
+To add Manim animations to your presentation you first need to render them. In order to make the integration with Reveal.js as smooth as possible you can use the Manim plugin's `PresentationScene`. There are no major differences with the normal `Scene` that you're used to, except for the `PresentationScene`'s `end_fragment()` method. If this method is called in the scene's `construct()` method it means there will be a pause in the animation when it is displayed in the slide deck. **Important:** every `construct()` you define **needs** to end with an `end_fragment()` call to correctly handle the animation.
 
 Once the animations have been rendered, you can link them in your slide deck. Here you have two options: either you display the animations fullscreen as the background of a slide, or you add them along with the rest of the objects in your slides.
 

@@ -5,12 +5,16 @@ import shutil
 import json
 
 
-mn.config.video_dir= "./video_slides"
-
 NORMAL = "normal"
 LOOP = "loop"
 COMPLETE_LOOP = "complete_loop"
 NO_PAUSE = "no_pause"
+
+# this is needed to make sure that the files are generated again when the 
+# end_fragment() calls are changed but not the animation itself.
+# TODO look into making this more efficient?
+mn.config.flush_cache = True
+mn.config.disable_caching = True
 
 
 class PresentationScene(mn.Scene):

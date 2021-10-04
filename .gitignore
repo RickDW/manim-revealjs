@@ -1,9 +1,36 @@
-# virtual environment (python)
+# Virtual environment (python)
 venv
 
-# python bytecode
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# manim render output
-examples/test_scenes/media
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Manim render output
+examples/showcase/video_slides
+examples/showcase/media
+
 manim_plugin/manim_revealjs/video_slides

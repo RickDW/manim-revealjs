@@ -4,9 +4,7 @@ This project contains the required plugins to use the beautiful mathematical ani
 
 (This is a fork of [manim_slides](https://github.com/chubbc/manim_slides) which itself is a fork of [manim_reveal](https://github.com/anjandn/manim_reveal). Both repositories were created with the same goal as this repository, but since they do not seem to be actively maintained I created this repo for my own use)
 
-At the moment this repository is a complete work in progress and you probably won't get much use out of it. Updates are expected in the next few weeks.
-
-**Update:** The basic functionality is now implemented, but it has not been rigorously tested. There are also a number of nice animation playback types that you can choose from. Their functionality was copied from [Christopher Besch's Manim web presenter project](https://github.com/christopher-besch/manim_web_presenter).
+**Update:** The basic functionality is now implemented, but it has not been rigorously tested. There also are a number of nice animation playback types that you can choose from. Their functionality was copied from [Christopher Besch's Manim web presenter project](https://github.com/christopher-besch/manim_web_presenter). More updates are expected in the coming weeks.
 
 ## Installation
 The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` file can be found in the `src/reveal_plugin/` directory. In the next section it will be explained how you can add generated videos to the slide deck.

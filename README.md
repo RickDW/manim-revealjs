@@ -6,7 +6,7 @@ This repository contains the required plugins to use the beautiful mathematical 
 
 At the moment this repository is a complete work in progress and you probably won't get much use out of it. Updates are expected in the next few weeks.
 
-**Update:** the basic functionality is now implemented, but it has not been rigorously tested.
+**Update:** The basic functionality is now implemented, but it has not been rigorously tested. There are also a number of nice animation playback types that you can choose from. Their functionality was copied from [Christopher Besch's Manim web presenter project](https://github.com/christopher-besch/manim_web_presenter). The next item on the list is making it easy to install the software through pypi and npm, as well as turning the python mini-package into a Manim plugin.
 
 ## How to use the plugins
 

@@ -6,9 +6,6 @@ import json
 
 
 mn.config.video_dir= "./video_slides"
-# TODO are the next two settings necessary?
-mn.config.flush_cache = True
-mn.config.disable_caching = True
 
 NORMAL = "normal"
 LOOP = "loop"

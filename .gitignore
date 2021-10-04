@@ -1,4 +1,9 @@
+# virtual environment (python)
 venv
+
+# python bytecode
+__pycache__
+
+# manim render output
 examples/test_scenes/media
-*.pyc
 manim_plugin/manim_revealjs/video_slides

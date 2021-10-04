@@ -106,37 +106,78 @@ function create_HTML_fragment(fragment_data) {
 // triggered by revealjs's fragmentshown event -> indicates we're going through the slides forwards
 function forward_trigger(event) {
   if (event.fragment.matches(".fv-fragment")) {
-    var time_start = event.fragment.getAttribute("time_start");
-    var time_end = event.fragment.getAttribute("time_end");
-    var fragment_type = event.fragment.getAttribute("fragment_type");
-    var background_video = event.fragment.getAttribute("background_video") == "true";
-
-    if (background_video) {
-      var current_slide = Reveal.getCurrentSlide();
-      var video_elem = current_slide.slideBackgroundElement
-        .getElementsByTagName("video")[0];
-    }
-    else {
-      var video_elem = event.fragment.parentElement;
-    }
-      
-    video_elem.ontimeupdate = function() {};
-    video_elem.currentTime = time_start;
-    video_elem.play();
-    video_elem.ontimeupdate = function() {
-      if (video_elem.currentTime - time_end > 0){
-        video_elem.pause();
-        video_elem.currentTime = time_end;
-        video_elem.ontimeupdate = function() {};
-
-        if (event.fragment.matches(".fv-final-fragment")) {
-          // go on the next one, this was a dummy fragment
-          // since this is inside 'fragmentshown', we know we're going forward
-          Reveal.next();
-        }
-      }
-    };
+    set_up_timeupdate(event.fragment);
   }
+}
+
+
+// helper function for forward_trigger
+function set_up_timeupdate(fragment) {
+  var time_start = fragment.getAttribute("time_start");
+  var time_end = fragment.getAttribute("time_end");
+  var fragment_type = fragment.getAttribute("fragment_type");
+  var background_video = fragment.getAttribute("background_video") == "true";
+
+  if (background_video) {
+    var current_slide = Reveal.getCurrentSlide();
+    var video_elem = current_slide.slideBackgroundElement
+      .getElementsByTagName("video")[0];
+  }
+  else {
+    var video_elem = fragment.parentElement;
+  }
+    
+  var prev_index = Number(fragment.getAttribute("data-fragment-index")) - 1;
+  var prev_frag = Reveal.getCurrentSlide().querySelector(
+    `.fv-fragment[data-fragment-index='${prev_index}']`);
+
+  if (prev_frag && prev_frag.getAttribute("fragment_type") == "complete_loop") {
+    // the previous fragment needs to be played to the end, so check whether it is in the middle of playing
+    end_prev = prev_frag.getAttribute("time_end");
+    if (video_elem.currentTime < end_prev) {
+      // it's in the middle of playing, so let's not go on to the next fragment until the end of the fragment
+      video_elem.setAttribute("vf-exit-loop", "true");
+      return;
+    }
+  }
+
+  video_elem.ontimeupdate = function() {};
+  video_elem.currentTime = time_start;
+  video_elem.play();
+  video_elem.ontimeupdate = function() {
+    if (video_elem.currentTime - time_end > 0){
+      video_elem.pause();
+      video_elem.currentTime = time_end;
+
+      if (fragment.matches(".fv-final-fragment")) {
+        // go on the next one, this was a dummy fragment
+        // since this is inside 'fragmentshown', we know we're going forward
+        video_elem.ontimeupdate = function() {};
+        Reveal.next();
+      }
+      else if (fragment_type == "no_pause") {
+        // immediately go on to the next one (also applies to the last fragment, not .fv-final-fragment)
+        video_elem.ontimeupdate = function() {};
+        Reveal.next();
+      }
+      else if (fragment_type == "loop" || (fragment_type == "complete_loop" 
+          && video_elem.getAttribute("vf-exit-loop") != "true")) {
+        // go back to the start
+        video_elem.currentTime = time_start;
+        video_elem.play();
+      }
+      else if (fragment_type == "complete_loop" && video_elem.getAttribute("vf-exit-loop") == "true") {
+        video_elem.setAttribute("vf-exit-loop", "false");
+
+        // after this, we'll go on to the next fragment, but for some reason there will not be
+        // a fragmentshown event. This means that we'll have to call the event handler manually
+        var next_index = Number(fragment.getAttribute("data-fragment-index")) + 1;
+        var next_frag = Reveal.getCurrentSlide().querySelector(
+          `.fv-fragment[data-fragment-index='${next_index}']`);
+        set_up_timeupdate(next_frag);
+      }
+    }
+  };
 }
 
 

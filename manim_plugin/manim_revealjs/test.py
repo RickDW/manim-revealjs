@@ -14,3 +14,5 @@ class Testing(PresentationScene):
         self.end_fragment(fragment_type=NORMAL)
         self.play(rect.animate.shift(mn.UP).rotate(mn.PI / 3))
         self.end_fragment()
+        self.play(rect.animate.shift(3*mn.LEFT))
+        self.end_fragment()

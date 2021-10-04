@@ -1,2 +1,3 @@
 - Properly register the manim plugin
-- Upload to pypi (and maybe npm)
+- Add documentation
+- Register dependencies for the python package

@@ -1,3 +1,6 @@
-- Properly register the manim plugin
-- Add documentation
-- Register dependencies for the python package
+- TODO Register dependencies for the python package
+- TODO Register the plugin on npm so more people can find it
+- TODO Look into an annotation+chalkboard plugin
+- TODO Add documentation
+- TODO set up a github website and use it to show the slides demo
+- TODO Properly register the manim plugin

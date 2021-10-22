@@ -36,8 +36,6 @@ class PresentationScene(mn.Scene):
         }
         dirname = os.path.dirname(self.renderer.file_writer.movie_file_path)
 
-        print(len(self.breaks), len(self.fragment_types))
-
         for i in range(1, len(self.breaks)):
             playback_info["fragments"].append({
                 "start": self.breaks[i-1],

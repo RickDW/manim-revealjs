@@ -9,6 +9,10 @@ This project contains the required plugins to use the beautiful mathematical ani
 ## Installation
 The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` file can be found in the `src/reveal_plugin/` directory. In the next section it will be explained how you can add generated videos to the slide deck.
 
+## Easy-to-use presentation template
+
+This development repository contains a lot of code that is not needed if creating a presentation is all you want to do. To make it really easy to create a new presentation that uses manim-revealjs, I have provided a [repository that you can clone](http://github.com/RickDW/presentation-template). You can edit the slides in any way you want, and then you can simply use python's built-in HTTP server to start your presentation. For further instructions please consult the repository's readme.
+
 ## Demo
 
 Once everything is installed you can run the demo that is provided in the `examples/showcase` directory.

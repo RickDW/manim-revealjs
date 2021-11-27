@@ -30,7 +30,4 @@ share/python-wheels/
 MANIFEST
 
 # Manim render output
-examples/showcase/video_slides
-examples/showcase/media
-
-manim_plugin/manim_revealjs/video_slides
+example-presentation/animations/**/

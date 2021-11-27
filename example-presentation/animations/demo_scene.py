@@ -2,7 +2,7 @@ import manim as mn
 from manim_revealjs import PresentationScene, COMPLETE_LOOP
 
 
-mn.config.video_dir= "./video_slides"
+mn.config.video_dir= "./videos"
 
 class DemoScene(PresentationScene):
     def construct(self):

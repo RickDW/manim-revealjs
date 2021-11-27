@@ -15,7 +15,7 @@ This development repository contains a lot of code that is not needed if creatin
 
 ## Demo
 
-Once everything is installed you can run the demo that is provided in the `examples/showcase` directory.
+Once everything is installed you can run the demo that is provided in the `example-presentation` directory (read the README that is provided along with the other files).
 
 ## How to use the plugins
 To add Manim animations to your presentation you first need to render them. In order to make the integration with Reveal.js as smooth as possible you can use the Manim plugin's `PresentationScene`. There are no major differences with the normal `Scene` that you're used to, except for the `PresentationScene`'s `end_fragment()` method. If this method is called in the scene's `construct()` method it means there will be a pause in the animation when it is displayed in the slide deck. **Important:** every `construct()` you define **needs** to end with an `end_fragment()` call to correctly handle the animation.
@@ -31,7 +31,7 @@ The final thing that needs to be done is to tell Reveal to use the RevealManim p
 ```
 Reveal.initialize({
     ...
-    autoPlayMedia: false, //recommended setting, no need to worry about it
+    autoPlayMedia: false, //recommended setting, prevents all videos from playing automatically
     plugins: [ ..., RevealManim ]
 });
 ```

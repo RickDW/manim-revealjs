@@ -1,10 +1,10 @@
-# [WIP] Manim and Reveal.js plugins for using mathematical animations in your slides
+# Manim and Reveal.js plugins for using mathematical animations in your slides
 
 This project contains the required plugins to use the beautiful mathematical animations that are made possible by [Manim](https://www.manim.community) in presentation slides made with [Reveal.js](https://github.com/hakimel/reveal.js). Manim was originally created by Grant Sanderson from the Youtube channel [3B1B](https://www.youtube.com/c/3blue1brown) which is well known for its pretty and clear mathematical animations.
 
 (This is a fork of [manim_slides](https://github.com/chubbc/manim_slides) which itself is a fork of [manim_reveal](https://github.com/anjandn/manim_reveal). Both repositories were created with the same goal as this repository, but since they do not seem to be actively maintained I created this repo for my own use)
 
-**Update (27-11-2021):** The project is now ready to be used. If you use it I'd love to hear about it :D
+**Update (27-11-2021):** The project is now in a state where it's easy to set up and use it. If you're using it I'd love to hear about it :)
 
 ## Installation
 The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` can be copied into your working directory by calling the function `manim_revealjs.plugin.export()`. In the `How to use` section it will be explained how you can add Manim videos to your slide deck.

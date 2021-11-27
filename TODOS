@@ -1,5 +1,4 @@
 - TODO Register dependencies for the python package
-- TODO Remove the revealjs submodule, replace with a python http server
 - TODO Register the plugin on npm so more people can find it
 - TODO Look into an annotation+chalkboard plugin
 - TODO Add documentation

@@ -4,18 +4,18 @@ This project contains the required plugins to use the beautiful mathematical ani
 
 (This is a fork of [manim_slides](https://github.com/chubbc/manim_slides) which itself is a fork of [manim_reveal](https://github.com/anjandn/manim_reveal). Both repositories were created with the same goal as this repository, but since they do not seem to be actively maintained I created this repo for my own use)
 
-**Update:** The basic functionality is now implemented, but it has not been rigorously tested. There also are a number of nice animation playback types that you can choose from. Their functionality was copied from [Christopher Besch's Manim web presenter project](https://github.com/christopher-besch/manim_web_presenter). More updates are expected in the coming weeks.
+**Update (27-11-2021):** The project is now ready to be used. If you use it I'd love to hear about it :D
 
 ## Installation
-The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` file can be found in the `src/js_plugin` directory of the [repository](https://github.com/RickDW/manim-revealjs). In the `How to use` section it will be explained how you can add generated videos to your slide deck.
+The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` can be copied into your working directory by calling the function `manim_revealjs.plugin.export()`. In the `How to use` section it will be explained how you can add Manim videos to your slide deck.
 
 ## Easy-to-use presentation template
 
-This development repository contains a lot of code that is not needed if creating a presentation is all you want to do. To make it really easy to create a new presentation that uses manim-revealjs, I have provided a [repository that you can clone](http://github.com/RickDW/presentation-template). You can edit the slides in any way you want, and then you can simply use python's built-in HTTP server to start your presentation. It requires no installation and can be started in one line of code: `python -m http.server`. For further instructions please consult the repository's readme.
+To make it really easy to create a new presentation that uses manim-revealjs, I have provided a [repository that you can clone](http://github.com/RickDW/presentation-template). You can edit the slides in any way you want, and then you can simply use python's built-in HTTP server to start your presentation. It requires no installation and the server can be started with one command: `python -m http.server`. If you then navigate to [localhost:8000](https://localhost:8000) you will see your presentation.
 
 ## Demo
 
-Once everything is installed you can run the demo that is provided in the `example-presentation` directory (read the README that is provided along with the other files).
+Once everything is installed you can run the demo that is provided in the `example-presentation` directory. For more details you can read the README in that directory.
 
 ## How to use the plugins
 To add Manim animations to your presentation you first need to render them. In order to make the integration with Reveal.js as smooth as possible you can use the Manim plugin's `PresentationScene`. There are no major differences with the normal `Scene` that you're used to, except for the `PresentationScene`'s `end_fragment()` method. If this method is called in the scene's `construct()` method it means there will be a pause in the animation when it is displayed in the slide deck. **Important:** every `construct()` you define **needs** to end with an `end_fragment()` call to correctly handle the animation.
@@ -36,16 +36,18 @@ Reveal.initialize({
 });
 ```
 
-Once you've done this you should be good to go! There are some more advanced options that you could look into such as animation looping, but this is all you need to add a simple animation to your slides.
+Once you've done this you are good to go! There are some more advanced options that you could look into such as animation looping, but this is all you need to add a simple animation to your slides.
 
 ## Fragment types
 
-The basic setup that was described in the last section should be plenty to get you up and running. If you want more control over how your animations are played during your presentation, such as putting your videos on a loop, then this is a good section to go through. The `end_fragment()` calls that define the video fragments can take an optional argument called `fragment_type`. It can take on a number of values, each of which is quickly described below.
+The basic setup that was described in the last section are enough to show a simple animation. If you want more control over how your animations are played during your presentation, such as putting your videos on a loop, then this is a good section to go through. The `end_fragment()` calls that define the video fragments can take an optional argument called `fragment_type`. It can take on a number of values, each of which is quickly described below.
+
+(These fragment types are defined as constants in the `manim_revealjs` package. I.e. `manim_revealjs.NORMAL / LOOP / ...`)
 
 `NORMAL` will play the fragment once from start to end. It's nothing special, but it's probably what you'll be using most of the time.
 
 `LOOP` will continuously loop a fragment from start to end. This is useful when for turntables for example.
 
-`COMPLETE_LOOP` is similar to a normal loop fragment, but there is a difference in how it handles interruptions. If you want to go to the next fragment in the middle of the loop, then this will block that. Instead the loop will go on until it reaches the fragment's end, and only then will the animation continue to play the next fragment. This is useful if you want the transitions between your fragments to be smooth, to prevent chaotic animations for example.
+`COMPLETE_LOOP` is similar to a normal loop fragment, but there is a difference in how it handles interruptions. If you want to go to the next fragment in the middle of the loop, then this will block that. Instead the loop will go on until it reaches the fragment's end, and only then will the animation continue to play the next fragment. This is useful if you want the transitions between your fragments to be smooth, to prevent your animations from looking chaotic.
 
 `NO_PAUSE` will play the fragment once from start to end like a normal fragment, and then it will immediately go on to the next fragment. This effect can be useful if you want to create an intro for a loop for example.

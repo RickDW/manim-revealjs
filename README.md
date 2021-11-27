@@ -7,11 +7,11 @@ This project contains the required plugins to use the beautiful mathematical ani
 **Update:** The basic functionality is now implemented, but it has not been rigorously tested. There also are a number of nice animation playback types that you can choose from. Their functionality was copied from [Christopher Besch's Manim web presenter project](https://github.com/christopher-besch/manim_web_presenter). More updates are expected in the coming weeks.
 
 ## Installation
-The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` file can be found in the `src/reveal_plugin/` directory. In the next section it will be explained how you can add generated videos to the slide deck.
+The Python package can be installed by running the command `pip install manim-revealjs`. To start using the Revealjs plugin in your slide deck you only need to include a `<script src="manim.js">`in your HTML file. The `manim.js` file can be found in the `src/js_plugin` directory of the [repository](https://github.com/RickDW/manim-revealjs). In the `How to use` section it will be explained how you can add generated videos to your slide deck.
 
 ## Easy-to-use presentation template
 
-This development repository contains a lot of code that is not needed if creating a presentation is all you want to do. To make it really easy to create a new presentation that uses manim-revealjs, I have provided a [repository that you can clone](http://github.com/RickDW/presentation-template). You can edit the slides in any way you want, and then you can simply use python's built-in HTTP server to start your presentation. For further instructions please consult the repository's readme.
+This development repository contains a lot of code that is not needed if creating a presentation is all you want to do. To make it really easy to create a new presentation that uses manim-revealjs, I have provided a [repository that you can clone](http://github.com/RickDW/presentation-template). You can edit the slides in any way you want, and then you can simply use python's built-in HTTP server to start your presentation. It requires no installation and can be started in one line of code: `python -m http.server`. For further instructions please consult the repository's readme.
 
 ## Demo
 
